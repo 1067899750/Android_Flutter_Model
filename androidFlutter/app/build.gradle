@@ -36,12 +36,15 @@ dependencies {
 
     //  依赖 flutter 库
     implementation project(':flutter')
+    rootProject.ext.support.each { k, v ->
+        implementation(v)
+    }
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.10.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation('androidx.core:core-ktx:1.9.0')
-    implementation('androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0')
+    rootProject.ext.dependencies.each { k, v ->
+        implementation(v)
+    }
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.1'
+    rootProject.ext.kotlin.each { k, v ->
+        implementation(v)
+    }
 }
