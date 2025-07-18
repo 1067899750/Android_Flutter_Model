@@ -10,7 +10,6 @@ import com.idlefish.flutterboost.FlutterBoostRouteOptions;
 import com.idlefish.flutterboost.containers.FlutterBoostActivity;
 
 import io.flutter.embedding.android.FlutterActivityLaunchConfigs;
-import io.flutter.embedding.android.FlutterActivityLaunchConfigs.BackgroundMode;
 
 public class MyFlutterBoostDelegate implements FlutterBoostDelegate {
 
