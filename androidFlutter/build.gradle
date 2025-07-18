@@ -1,0 +1,44 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        kotlin_version = '1.7.0'
+    }
+
+    repositories {
+        maven { url "https://www.jitpack.io" } // 美团的 Walle 可能托管在这里
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()  // 或者使用其他仓库，如 jcenter()
+        google()
+        jcenter()
+        mavenLocal()
+
+    }
+
+    dependencies {
+        classpath("com.android.tools.build:gradle:7.3.1")
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "https://www.jitpack.io" } // 美团的 Walle 可能托管在这里
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()  // 或者使用其他仓库，如 jcenter()
+        google()
+        jcenter()
+        mavenLocal()
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
