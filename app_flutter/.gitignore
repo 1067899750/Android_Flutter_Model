@@ -47,3 +47,7 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+/pubspec.lock
+/devtools_options.yaml
+/app_flutter.iml
+/app_flutter_android.iml
