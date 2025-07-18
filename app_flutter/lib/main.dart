@@ -1,6 +1,19 @@
+import 'package:app_flutter/router/app_global_page_visibility_observer.dart';
+import 'package:app_flutter/router/custom_interceptor.dart';
+import 'package:app_flutter/router/nav_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boost/flutter_boost.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  PageVisibilityBinding.instance
+      .addGlobalObserver(AppGlobalPageVisibilityObserver());
+  CustomFlutterBinding();
+  runApp(const MyApp());
+}
+
+class CustomFlutterBinding extends WidgetsFlutterBinding
+    with BoostFlutterBinding {}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,35 +38,36 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  Route<dynamic>? routeFactory(
+      RouteSettings settings, bool isContainerPage, String? uniqueId) {
+    FlutterBoostRouteFactory? func = NavRouter.routerMap[settings.name!];
+    if (func == null) {
+      return null;
+    }
+    return func(settings, isContainerPage, uniqueId);
+  }
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+    return FlutterBoostApp(routeFactory,
+        // 如果自定了appBuilder，需要将传入的参数添加到widget层次结构中去，
+        // 否则会导致FluttBoost初始化失败。
+        appBuilder: (child) => MaterialApp(
+          home: GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTap: () {
+              // 点击空白隐藏系统软件盘
+              FocusScope.of(context).unfocus();
+            },
+            child: child,
+          ),
+          builder: EasyLoading.init(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+        interceptors: [CustomInterceptor()]);
   }
 }

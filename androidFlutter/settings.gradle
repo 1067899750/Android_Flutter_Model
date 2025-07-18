@@ -1,7 +1,7 @@
 
 
 include ':app'
-
+rootProject.name = "androidFlutter"
 setBinding(new Binding([gradle: this]))
 //这里是当前 app_flutter 的位置，最好是把 flutter app_flutter 放在和当前android项目平级的文件夹里面
 evaluate(new File(

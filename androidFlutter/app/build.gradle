@@ -36,6 +36,8 @@ dependencies {
 
     //  依赖 flutter 库
     implementation project(':flutter')
+    implementation project(":flutter_boost")
+
     rootProject.ext.support.each { k, v ->
         implementation(v)
     }
