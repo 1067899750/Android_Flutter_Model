@@ -58,16 +58,16 @@ class _MyHomePageState extends State<MyHomePage> {
         // 如果自定了appBuilder，需要将传入的参数添加到widget层次结构中去，
         // 否则会导致FluttBoost初始化失败。
         appBuilder: (child) => MaterialApp(
-          home: GestureDetector(
-            behavior: HitTestBehavior.translucent,
-            onTap: () {
-              // 点击空白隐藏系统软件盘
-              FocusScope.of(context).unfocus();
-            },
-            child: child,
-          ),
-          builder: EasyLoading.init(),
-        ),
+              home: GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () {
+                  // 点击空白隐藏系统软件盘
+                  FocusScope.of(context).unfocus();
+                },
+                child: child,
+              ),
+              builder: EasyLoading.init(),
+            ),
         interceptors: [CustomInterceptor()]);
   }
 }

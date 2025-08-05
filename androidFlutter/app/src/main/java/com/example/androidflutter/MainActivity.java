@@ -1,7 +1,15 @@
 package com.example.androidflutter;
 
-import io.flutter.embedding.android.FlutterActivity;
+import android.os.Bundle;
 
-public class MainActivity extends FlutterActivity {
+import com.idlefish.flutterboost.containers.FlutterBoostActivity;
 
+
+public class MainActivity extends FlutterBoostActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 }
