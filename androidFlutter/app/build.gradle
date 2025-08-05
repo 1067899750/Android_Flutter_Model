@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'com.example.androidflutter'
-    compileSdkVersion 31
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.example.androidflutter"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0.0"
 

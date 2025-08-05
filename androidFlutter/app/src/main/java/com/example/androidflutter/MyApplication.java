@@ -10,6 +10,8 @@ import com.idlefish.flutterboost.FlutterBoostSetupOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.flutter.embedding.engine.FlutterEngine;
+
 
 public class MyApplication extends Application {
     @Override
@@ -31,10 +33,8 @@ public class MyApplication extends Application {
                 .isDebugLoggingEnabled(isDebugMode)
                 .shellArgs(args.toArray(new String[0]))
                 .build();
-        FlutterBoost.instance().setup(this, new MyFlutterBoostDelegate(), engine -> {
-            // Register the platform view
-            engine.getPlugins();
-        }, options);
+        // Register the platform view
+        FlutterBoost.instance().setup(this, new MyFlutterBoostDelegate(), FlutterEngine::getPlugins, options);
     }
 
 }
