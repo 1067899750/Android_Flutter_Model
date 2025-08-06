@@ -9,7 +9,7 @@ class NavRouter {
       return PageRouteBuilder<dynamic>(
           settings: settings, pageBuilder: (_, __, ___) => const DebugPage());
     },
-    '/mainPage': (settings, isContainerPage, uniqueId) {
+    'mainPage': (settings, isContainerPage, uniqueId) {
       return PageRouteBuilder<dynamic>(
           settings: settings, pageBuilder: (_, __, ___) => const MainPage());
     },
