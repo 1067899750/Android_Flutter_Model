@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
     }
 
     public void onViewClick(View view) {
@@ -38,9 +37,4 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        FlutterBoost.instance().getPlugin().onBackPressed();
-    }
 }
