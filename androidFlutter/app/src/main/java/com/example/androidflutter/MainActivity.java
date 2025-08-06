@@ -1,8 +1,10 @@
 package com.example.androidflutter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.idlefish.flutterboost.FlutterBoost;
@@ -29,5 +31,16 @@ public class MainActivity extends AppCompatActivity {
                 .requestCode(1111)
                 .build();
         FlutterBoost.instance().open(options);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        FlutterBoost.instance().getPlugin().onBackPressed();
     }
 }
